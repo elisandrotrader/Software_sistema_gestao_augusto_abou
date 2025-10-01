@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Controle de Estoque</h1>
+        <a href="/" class="back-btn">Voltar</a>
+    </header>
+    <main>
+        <h2>Adicionar Produto (Entrada)</h2>
+        <form method="POST" aria-label="Formulário de adição de produto">
+            <label for="produto">Produto:</label>
+            <input type="text" id="produto" name="produto" required aria-required="true"><br>
+            <label for="codigo_barras">Código de Barras:</label>
+            <input type="text" id="codigo_barras" name="codigo_barras" required aria-required="true"><br>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required aria-required="true"><br>
+            <label for="validade">Validade (YYYY-MM-DD):</label>
+            <input type="date" id="validade" name="validade" required aria-required="true"><br>
+            <button type="submit">Adicionar</button>
+        </form>
+        <h2>Itens em Estoque</h2>
+        <div style="margin-bottom: 15px;">
+            <a href="{{ url_for('relatorio_estoque_pdf') }}" target="_blank" class="btn-export">
+                Exportar para PDF
+            </a>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Código de Barras</th>
+                <th>Quantidade</th>
+                <th>Validade</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td><a href="{{ url_for('editar_item', id=item[0]) }}" class="btn-edit">Editar</a></td>
+                <td><a href="{{ url_for('deletar_item', id=item[0]) }}" class="btn-delete" onclick="return confirm('Tem certeza?');">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <!-- <h2>Produtos Vencidos</h2>
+        <ul>
+            {% for item in vencidos %}
+            <li>{{ item[1] }} - Vencido em {{ item[4] }}</li>
+            {% endfor %}
+        </ul> -->
+        {% if vencidos %}
+        <div class="alert alert-danger">
+            <h3>Atenção: Produtos Vencidos!</h3>
+            <ul>
+                {% for item in vencidos %}
+                    <li>{{ item[1] }} (Código: {{ item[2] }}) - Venceu em: {{ item[4] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if vencimento_proximo %}
+        <div class="alert alert-warning">
+            <h3>Alerta: Produtos com Validade Próxima (Próximos 30 dias)</h3>
+            <ul>
+                {% for item in vencimento_proximo %}
+                    <li>{{ item[1] }} (Código: {{ item[2] }}) - Vence em: {{ item[4] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

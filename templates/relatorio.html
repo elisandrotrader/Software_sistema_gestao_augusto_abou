@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>{{ titulo }}</h2>
+    <table>
+        <tr>
+            {% for col in colunas %}
+            <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in dados %}
+        <tr>
+            {% for val in row %}
+            <td>{{ val }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/auditoria">Voltar</a>
+</body>
+</html>

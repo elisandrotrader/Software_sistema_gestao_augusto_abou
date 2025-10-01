@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Definir Período para Relatório</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Definir Período para Relatório</h2>
+    <form method="POST">
+        <label for="data_inicio">Data Início (YYYY-MM-DD):</label>
+        <input type="date" id="data_inicio" name="data_inicio" required><br>
+        <label for="data_fim">Data Fim (YYYY-MM-DD):</label>
+        <input type="date" id="data_fim" name="data_fim" required><br>
+        <button type="submit">Gerar Relatório</button>
+    </form>
+    <a href="/auditoria">Voltar</a>
+</body>
+</html>

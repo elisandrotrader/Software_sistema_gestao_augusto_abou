@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Fornecedores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gestão de Fornecedores</h1>
+        <a href="{{ url_for('fornecedores') }}" class="back-btn">Cancelar</a>
+    </header>
+    <main>
+        <h2>Editar Fornecedor</h2>
+        <form method="POST" aria-label="Formulário de edição de fornecedor">
+            <label for="fornecedor_regiao">Região:</label>
+            <input type="text" id="fornecedor_regiao" name="fornecedor_regiao" required aria-required="true" value="{{ fornecedor[1] }}"><br>
+            <label for="fornecedor_cidade">Cidade:</label>
+            <input type="text" id="fornecedor_cidade" name="fornecedor_cidade" required aria-required="true" value="{{ fornecedor[2] }}"><br>
+            <label for="fornecedor_num_loja">Número da Loja:</label>
+            <input type="text" id="fornecedor_num_loja" name="fornecedor_num_loja" required aria-required="true" value="{{ fornecedor[3] }}"><br>
+            <label for="fornecedor_potencia_loja">Potência da Loja:</label>
+            <input type="text" id="fornecedor_potencia_loja" name="fornecedor_potencia_loja" required aria-required="true" value="{{ fornecedor[4] }}"><br>
+            <label for="fornecedor_num_cim">Número do CIM:</label>
+            <input type="text" id="fornecedor_num_cim" name="fornecedor_num_cim" required aria-required="true" value="{{ fornecedor[5] }}"><br>
+            <label for="fornecedor_endereco">Endereço:</label>
+            <input type="text" id="fornecedor_endereco" name="fornecedor_endereco" required aria-required="true" value="{{ fornecedor[6] }}"><br>
+            <button type="submit">Salvar</button>
+        </form>
+       
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

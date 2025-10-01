@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SISTEMA DE GESTÃO AUGUSTO ABOU</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>MENU PRINCIPAL</h1>
+    </header>
+    <main>
+        <section class="menu-section" aria-label="Seção de Cadastros">
+            <h2>Cadastros</h2>
+            <div class="card-grid">
+                <a href="/clientes" class="card" aria-label="Cadastro de Clientes">
+                    <span class="icon">👤</span> Cadastro de Clientes
+                </a>
+                <a href="/estoque" class="card" aria-label="Cadastro de Produtos">
+                    <span class="icon">📦</span> Cadastro de Produtos
+                </a>
+                <a href="/fornecedores" class="card" aria-label="Cadastro de Fornecedores">
+                    <span class="icon">🏭</span> Cadastro de Fornecedores
+                </a>
+            </div>
+        </section>
+        <section class="menu-section" aria-label="Seção de Lançamentos">
+            <h2>Lançamentos</h2>
+            <div class="card-grid">
+                <a href="/estoque" class="card" aria-label="Entradas no Estoque">
+                    <span class="icon">➕</span> Entradas no Estoque
+                </a>
+                <a href="/saida" class="card" aria-label="Saídas do Estoque">
+                    <span class="icon">➖</span> Saídas do Estoque
+                </a>
+                <a href="/estoque" class="card" aria-label="Inventário do Estoque" disabled>
+                    <span class="icon">📋</span> Inventário do Estoque
+                </a>
+            </div>
+        </section>
+        <section class="menu-section" aria-label="Seção de Relatórios">
+            <h2>Relatórios</h2>
+            <div class="card-grid">
+                <a href="/auditoria" class="card" aria-label="Relatório de Produtos">
+                    <span class="icon">📊</span> Relatório de Produtos
+                </a>
+                <a href="/auditoria" class="card" aria-label="Relatório de Clientes" disabled>
+                    <span class="icon">👥</span> Relatório de Clientes
+                </a>
+                <a href="/auditoria" class="card" aria-label="Relatório de Entradas" disabled>
+                    <span class="icon">📥</span> Relatório de Entradas
+                </a>
+                <a href="/auditoria" class="card" aria-label="Relatório de Saídas" disabled>
+                    <span class="icon">📤</span> Relatório de Saídas
+                </a>
+                <a href="/auditoria" class="card" aria-label="Relatório de Usuários" disabled>
+                    <span class="icon">🧑‍💻</span> Relatório de Usuários
+                </a>
+            </div>
+        </section>
+        <section class="menu-section" aria-label="Seção de Tratamento">
+            <h2>Tratamento</h2>
+            <div class="card-grid">
+                <a href="#" class="card" aria-label="Tratamento Avançado" disabled>
+                    <span class="icon">🎬</span> Tratamento Avançado
+                </a>
+            </div>
+        </section>
+        <section class="menu-section" aria-label="Seção Avançada">
+            <h2>Avançado</h2>
+            <div class="card-grid">
+                <a href="/backup_nuvem" class="card" aria-label="Criar Backup">
+                    <span class="icon">💾</span> Criar Backup
+                </a>
+                <a href="#" class="card" aria-label="Configurações" disabled>
+                    <span class="icon">⚙️</span> Configurações
+                </a>
+                <a href="#" class="card" aria-label="Informações" disabled>
+                    <span class="icon">ℹ️</span> Informações
+                </a>
+            </div>
+        </section>
+        <section class="menu-section" aria-label="Seção Mais">
+            <h2>Mais</h2>
+            <div class="card-grid">
+                <a href="#" class="card" aria-label="Enviar E-mail" disabled>
+                    <span class="icon">📧</span> Enviar E-mail
+                </a>
+                <a href="#" class="card" aria-label="Fechar" onclick="window.close()">
+                    <span class="icon">❌</span> Fechar
+                </a>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar de Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gerenciar Clientes</h1>
+        <a href="/" class="back-btn">Voltar ao menu</a>
+    </header>
+    <main>
+        
+        <h2>Adicionar Novo Cliente</h2>
+        <form  method="POST">
+            <label for="regiao">Região:</label>
+            <input type="text" id="regiao" name="regiao" required aria-required="true"><br>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required aria-required="true"><br>
+            <label for="num_loja">Número da Loja:</label>
+            <input type="text" id="num_loja" name="num_loja" required aria-required="true"><br>
+            <label for="potencia_loja">Potência da Loja:</label>
+            <input type="text" id="potencia_loja" name="potencia_loja" required aria-required="true"><br>
+            <label for="num_cim">Número do CIM:</label>
+            <input type="text" id="num_cim" name="num_cim" required aria-required="true"><br>
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required aria-required="true"><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+        
+        <h2>Clientes Cadastrados</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Região</th>
+                <th>Cidade</th>
+                <th>Nº Loja</th>
+                <th>Potência</th>
+                <th>Nº CIM</th>
+                <th>Endereço</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente[0] }}</td>
+                <td>{{ cliente[1] }}</td>
+                <td>{{ cliente[2] }}</td>
+                <td>{{ cliente[3] }}</td>
+                <td>{{ cliente[4] }}</td>
+                <td>{{ cliente[5] }}</td>
+                <td>{{ cliente[6] }}</td>
+                <td><a href="{{ url_for('editar_cliente', id=cliente[0]) }}" class="btn-edit">Editar</a></td>
+                <td><a href="{{ url_for('delete_cliente', id=cliente[0]) }}" class="btn-delete" onclick="return confirm('Tem certeza?');">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

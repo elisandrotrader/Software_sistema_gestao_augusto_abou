@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Editar Item de Estoque</h1>
+        <a href="{{ url_for('estoque') }}" class="back-btn">Cancelar</a>
+    </header>
+    <main>
+        <h2>Editar Produto (Entrada)</h2>
+        <form method="POST" aria-label="Formulário de edição de produto">
+            <label for="produto">Produto:</label>
+            <input type="text" id="produto" name="produto" required aria-required="true" value="{{ item[1] }}" ><br>
+            <label for="codigo_barras">Código de Barras:</label>
+            <input type="text" id="codigo_barras" name="codigo_barras" required aria-required="true" value="{{ item[2] }}"><br>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required aria-required="true" value="{{ item[3] }}"><br>
+            <label for="validade">Validade (YYYY-MM-DD):</label>
+            <input type="date" id="validade" name="validade" required aria-required="true" value="{{ item[4] }}"><br>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+        
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

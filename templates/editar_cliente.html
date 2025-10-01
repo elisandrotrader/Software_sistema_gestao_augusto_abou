@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Editar Cliente (Loja: {{ cliente[3] }})</h1>
+        <a href="{{ url_for('clientes') }}" class="back-btn">Cancelar</a>
+    </header>
+    <main>
+        <form method="POST">
+            <label>Região: <input type="text" name="regiao" value="{{ cliente[1] }}" required></label>
+            <label>Cidade: <input type="text" name="cidade" value="{{ cliente[2] }}" required></label>
+            <label>Nº Loja: <input type="text" name="num_loja" value="{{ cliente[3] }}" required></label>
+            <label>Potência: <input type="text" name="potencia_loja" value="{{ cliente[4] }}"></label>
+            <label>Nº CIM: <input type="text" name="num_cim" value="{{ cliente[5] }}"></label>
+            <label>Endereço: <input type="text" name="endereco" value="{{ cliente[6] }}"></label>
+            
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

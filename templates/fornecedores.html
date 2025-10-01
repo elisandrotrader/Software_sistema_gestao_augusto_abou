@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Fornecedores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gestão de Fornecedores</h1>
+        <a href="/" class="back-btn">Voltar</a>
+    </header>
+    <main>
+        <h2>Cadastrar Fornecedor</h2>
+        <form method="POST" aria-label="Formulário de cadastro de fornecedor">
+            <label for="fornecedor_regiao">Região:</label>
+            <input type="text" id="fornecedor_regiao" name="fornecedor_regiao" required aria-required="true"><br>
+            <label for="fornecedor_cidade">Cidade:</label>
+            <input type="text" id="fornecedor_cidade" name="fornecedor_cidade" required aria-required="true"><br>
+            <label for="fornecedor_num_loja">Número da Loja:</label>
+            <input type="text" id="fornecedor_num_loja" name="fornecedor_num_loja" required aria-required="true"><br>
+            <label for="fornecedor_potencia_loja">Potência da Loja:</label>
+            <input type="text" id="fornecedor_potencia_loja" name="fornecedor_potencia_loja" required aria-required="true"><br>
+            <label for="fornecedor_num_cim">Número do CIM:</label>
+            <input type="text" id="fornecedor_num_cim" name="fornecedor_num_cim" required aria-required="true"><br>
+            <label for="fornecedor_endereco">Endereço:</label>
+            <input type="text" id="fornecedor_endereco" name="fornecedor_endereco" required aria-required="true"><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <h2>Fornecedores Cadastrados</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Região</th>
+                <th>Cidade</th>
+                <th>Nº Loja</th>
+                <th>Potência</th>
+                <th>Nº CIM</th>
+                <th>Endereço</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+            {% for fornecedor in fornecedores %}
+            <tr>
+                <td>{{ fornecedor[0] }}</td>
+                <td>{{ fornecedor[1] }}</td>
+                <td>{{ fornecedor[2] }}</td>
+                <td>{{ fornecedor[3] }}</td>
+                <td>{{ fornecedor[4] }}</td>
+                <td>{{ fornecedor[5] }}</td>
+                <td>{{ fornecedor[6] }}</td>
+                <td><a href="{{ url_for('editar_fornecedores', id=fornecedor[0]) }}" class="btn-edit">Editar</a></td>
+                <td><a href="{{ url_for('deletar_fornecedores', id=fornecedor[0]) }}" class="btn-delete" onclick="return confirm('Tem certeza?');">Excluir</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
